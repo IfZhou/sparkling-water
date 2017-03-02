@@ -1,2 +1,3 @@
 # include additional files which are not fetched by default by setuptools
-include version.txt
+include build/version.txt
+graft build/lib
