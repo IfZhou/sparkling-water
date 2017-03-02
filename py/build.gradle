@@ -108,7 +108,8 @@ def copyH2OFromH2OHome(String h2oHome) {
         copy {
             from "${h2oHome}/h2o-py/h2o"
             into file("${project.pkgDir}/h2o")
-            exclude '*.pyc'
+            exclude '**/*.pyc'
+            exclude '**/h2o.jar'
         }
 }
 
@@ -117,7 +118,8 @@ def copyH2OFromH2OWheel(String h2oPythonWheel) {
             from zipTree(h2oPythonWheel)
             into file("${project.pkgDir}")
             include 'h2o/**'
-            exclude '*.pyc'
+            exclude '**/*.pyc'
+            exclude '**/h2o.jar'
         }
 }
 

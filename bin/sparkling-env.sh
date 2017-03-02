@@ -46,8 +46,7 @@ SCALA_VERSION=$(cat $TOPDIR/gradle.properties | grep scalaBaseVersion | sed -e "
 FAT_JAR="sparkling-water-assembly_$SCALA_VERSION-$VERSION-all.jar"
 FAT_JAR_FILE="$TOPDIR/assembly/build/libs/$FAT_JAR"
 major_version=`echo $VERSION | cut -d . -f 1,2`
-version_without_snapshot=`echo $VERSION | cut -d - -f 1`
-PY_ZIP="h2o_pysparkling_${major_version}-${version_without_snapshot}.zip"
+PY_ZIP="h2o_pysparkling_${major_version}-${VERSION}.zip"
 PY_ZIP_FILE="$TOPDIR/py/build/dist/$PY_ZIP"
 
 # Default master
