@@ -47,8 +47,8 @@ FAT_JAR="sparkling-water-assembly_$SCALA_VERSION-$VERSION-all.jar"
 FAT_JAR_FILE="$TOPDIR/assembly/build/libs/$FAT_JAR"
 major_version=`echo $VERSION | cut -d . -f 1,2`
 version_without_snapshot=`echo $VERSION | cut -d - -f 1`
-PY_EGG="h2o_pysparkling_${major_version}-${version_without_snapshot}-py2.7.egg"
-PY_EGG_FILE="$TOPDIR/py/build/dist/$PY_EGG"
+PY_ZIP="h2o_pysparkling_${major_version}-${version_without_snapshot}.zip"
+PY_ZIP_FILE="$TOPDIR/py/build/dist/$PY_ZIP"
 
 # Default master
 DEFAULT_MASTER="local[*]"
