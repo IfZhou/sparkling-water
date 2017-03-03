@@ -95,6 +95,7 @@ def copyPySetup() {
     copy {
         from("$projectDir") {
             include 'README.rst'
+            include 'MANIFEST.in'
             include 'setup.cfg'
             include 'setup.py'
             include 'pysparkling/*'
@@ -126,9 +127,8 @@ def copyH2OFromH2OWheel(String h2oPythonWheel) {
 //
 // Make PySparkling distribution zip package
 //
-task distPython(type: Zip, dependsOn: checkPythonEnv) {
+task distPython(type: Zip, dependsOn: [checkPythonEnv, configurations.compile] ) {
     doFirst {
-        //preparePythonEnv(environment)
         def H2O_HOME = System.getenv("H2O_HOME")
         def H2O_PYTHON_WHEEL = System.getenv("H2O_PYTHON_WHEEL")
 
@@ -149,6 +149,7 @@ task distPython(type: Zip, dependsOn: checkPythonEnv) {
             rename ".*", "sparkling_water_assembly.jar"
         }
         // Save comment into module file
+        file("${project.pkgDir}/sparkling_water/").mkdir()
         file("${project.pkgDir}/sparkling_water/__init__.py").write("# Sparkling-water JAR holder for pySparkling module.")
     }
     // Configure proper name
